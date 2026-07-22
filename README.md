@@ -1,4 +1,4 @@
-# 🛣️ SafeRoute — Smart Road-Trip Planner & Ride Platform
+#  SafeRoute — Smart Road-Trip Planner & Ride Platform
 
 > **Full project documentation & report.** Everything in this file: what the app does, a screenshot tour of every screen (desktop **and** mobile, captured with Playwright from the real running app), what every option on every page is for, how to run it on any PC, the database, the free APIs, the PWA, and troubleshooting.
 
@@ -8,7 +8,7 @@ SafeRoute is a **full-stack travel platform**: plan road trips on **real driving
 
 ---
 
-## 📚 Table of Contents
+##  Table of Contents
 
 1. [Quick Start (run on any PC)](#-quick-start--run-on-any-pc)
 2. [Screenshot Tour — every screen explained](#-screenshot-tour--every-screen-explained)
@@ -26,7 +26,7 @@ SafeRoute is a **full-stack travel platform**: plan road trips on **real driving
 
 ---
 
-## 🚀 Quick Start — run on any PC
+##  Quick Start — run on any PC
 
 This zip **includes the `.env` file**, so the app is pre-connected to its Supabase backend. You only need **Node.js**.
 
@@ -38,19 +38,19 @@ This zip **includes the `.env` file**, so the app is pre-connected to its Supaba
 4. Open the printed URL (usually **http://localhost:5173**).
 5. **Register** an account → confirm the email Supabase sends → **Sign in**. Done.
 
-> 💡 The database schema is already applied to the connected Supabase project. If you ever connect a **fresh** Supabase project, run `supabase/schema.sql` in its SQL Editor first (it's idempotent — safe to re-run anytime).
+>  The database schema is already applied to the connected Supabase project. If you ever connect a **fresh** Supabase project, run `supabase/schema.sql` in its SQL Editor first (it's idempotent — safe to re-run anytime).
 
 ---
 
-## 📸 Screenshot Tour — every screen explained
+##  Screenshot Tour — every screen explained
 
 *All screenshots below were captured with **Playwright** from the real running app (viewport 1440×900 desktop, 390×844 mobile).*
 
-### 🔐 Login
+###  Login
 ![Login](docs/screenshots/01-login-desktop.png)
 Email + password sign-in (Supabase Auth). **Forgot password?** sends a real reset email. **Create one free** → registration with name, email, password + confirmation. New signups automatically get a profile and settings row via a database trigger.
 
-### 🏠 Dashboard — your command center
+###  Dashboard — your command center
 ![Dashboard](docs/screenshots/02-dashboard-desktop.png)
 - **Admin broadcast banner** (the yellow strip) — announcements published from the Admin Panel appear here for every user.
 - **Quick-action tiles** — jump to Start Journey, New Trip, Tourism, Risk Analysis.
@@ -58,39 +58,39 @@ Email + password sign-in (Supabase Auth). **Forgot password?** sends a real rese
 - **Quick Plan** — type From/To with **real city autocomplete** (or tap the GPS button), or use a popular-route chip → opens the New Trip planner and runs the analysis automatically.
 - **Recent Trips**, **Driver Profile**, **live Weather** (with what-to-wear advice + link to Smart Outfit), **Risk Distribution donut**, **6-month Activity chart**, **latest-trip route drawn on the map**, **Tourism highlights** with real photos, and **Live Hazards** derived from real weather.
 
-### 🗺️ New Trip — plan with real routes
+###  New Trip — plan with real routes
 ![New Trip](docs/screenshots/03-newtrip-desktop.png)
 Search **real cities** (Open-Meteo geocoding autocomplete, GPS button for your position). Set preferences: travel style, driver profile, road type, season, difficulty, weather. **Find Safe Routes** fetches up to **3 real driving routes from OSRM** (true distance, duration, geometry drawn on the map — selected route solid, alternatives dashed). Each route gets a **risk score** computed from real speed/distance plus your conditions, and a traffic label from actual average speed. Then **Save to History** or **Start Live Journey**.
 
-### 🛰️ Live Journey — GPS trip mode
+###  Live Journey — GPS trip mode
 ![Journey](docs/screenshots/04-journey-desktop.png)
 Pick a start (GPS button) and destination → **Start Journey** opens a **split screen**: live map with a pulsing you-are-here marker following your real GPS, and a panel with progress bar, km remaining, live speed, ETA, elapsed time, **voice announcements** (start, every 25%, arrival — mutable), **weather + outfit advice for your destination**, and **real photos of landmarks around your current position** that refresh as you move. Arrival is detected automatically and the trip saves to History. No GPS on a desktop? **Demo Drive** simulates driving along the real route.
 
-### 🚕 Rides — customer & driver marketplace
+###  Rides — customer & driver marketplace
 ![Rides](docs/screenshots/05-rides-desktop.png)
 Real two-sided ride system, like ride-hailing apps:
 - **Customers**: pickup (GPS) + destination → **Get Fare** shows an **up-front price from real road distance** (Rs. 200 base + Rs. 45/km) with ETA → **Request Ride** → live status: *Finding driver → Driver on the way → Completed*, with cancel.
 - **Drivers** (switch in Profile → Account Type): earnings dashboard, **incoming request feed** with Accept (race-safe), Complete rides to earn. The sidebar renames itself *Book a Ride* ↔ *Driver Hub* based on your account type.
 
-### 🏔️ Tourism Hub — explore any city on Earth
+###  Tourism Hub — explore any city on Earth
 ![Tourism](docs/screenshots/06-tourism-desktop.png)
 - **Explore** — search **any city worldwide** → real documented places within 10 km, each with a **real photo**, description, **distance from center**, Wikipedia link, open-in-maps, and Add to Itinerary.
 - **Scenic Routes / Hotels / Attractions** — curated Pakistani picks with real photos; scenic routes have full detail pages.
 - **Itinerary** — persistent day plan: numbered stops, durations, Optimize, Clear, total-hours summary. Saved automatically.
 
-### 👕 Smart Outfit — ML weather classifier + your closet
+###  Smart Outfit — ML weather classifier + your closet
 ![Smart Outfit](docs/screenshots/07-outfit-desktop.png)
 A decision-tree model (ported from a Python/scikit-learn project) classifies live weather into **Cold / Mild / Hot / Rainy** — the animated hero banner changes its gradient and floating emojis per category. It recommends outfits **from your own closet** first, then generic suggestions. Manage your **Closet & Wishlist**: add items (auto-categorized + emoji), move wishlist→closet, all saved per user. Check any city, or use GPS.
 
-### 👑 Subscription — Free / Pro / Fleet
+###  Subscription — Free / Pro / Fleet
 ![Subscription](docs/screenshots/08-subscription-desktop.png)
 Three plans with feature lists and up-front pricing. Free keeps all core planning; **Pro** unlocks CSV export & advanced extras; **Fleet** targets teams. Choosing a plan saves to your profile (demo billing — no real charge) and feeds the **Admin Revenue dashboard**. Free users hitting a Pro feature (e.g. CSV export) get a friendly upgrade prompt.
 
-### 🛡️ Admin Panel — run the whole platform
+###  Admin Panel — run the whole platform
 ![Admin](docs/screenshots/09-admin-desktop.png)
 Six tabs (admin accounts only): **Overview** (recent signups/trips), **Users** (search/filter/sort/paginate, edit role·plan·safety score, drill-down per user, delete user data, CSV), **Trips** (moderate all trips), **Analytics** (signup & trip charts, platform risk donut, top destinations), **Revenue** (MRR, annual run-rate, conversion %, plan donut, subscriber list), **Broadcast** (publish announcements typed info/success/warning/danger → they appear on every user's dashboard + notification bell; hide or delete anytime). Eight KPI cards on top.
 
-### ⚠️ Risk Analysis
+###  Risk Analysis
 ![Risk Analysis](docs/screenshots/10-risk-desktop.png)
 Your risk mix (donut), 6-month risk trend, highest-risk trips ranked with bars, personalized recommendations from your own data — plus an interactive **Pre-Trip Safety Checklist** (10 practical checks, progress bar goes green on 10/10, persisted).
 
@@ -99,7 +99,7 @@ Your risk mix (donut), 6-month risk trend, highest-risk trips ranked with bars, 
 
 ---
 
-## 📱 Mobile Experience
+##  Mobile Experience
 
 Fully responsive, captured at 390×844:
 
@@ -112,7 +112,7 @@ Fully responsive, captured at 390×844:
 
 ---
 
-## 📲 PWA — install it like a real app
+##  PWA — install it like a real app
 
 SafeRoute is a **Progressive Web App**:
 
@@ -124,7 +124,7 @@ SafeRoute is a **Progressive Web App**:
 
 ---
 
-## 🧭 Every Page & Option Reference
+##  Every Page & Option Reference
 
 | Page (route) | What it's for | Key options |
 |---|---|---|
@@ -145,11 +145,11 @@ SafeRoute is a **Progressive Web App**:
 | **Subscription** `/subscription` | Plans | Free/Pro/Fleet cards, upgrade/downgrade with confirm |
 | **Settings** `/settings` | Preferences | Language, units, notification toggles, **theme picker + density**, change password, download my data, delete account, sign out |
 | **Admin** `/admin` | Platform control | Overview / Users / Trips / Analytics / Revenue / Broadcast (admins only) |
-| **Topbar** (everywhere) | Global chrome | ☰ sidebar toggle, page title, global trip search, 🎨 theme menu, 🔔 notifications (broadcasts + trip alerts), user menu |
+| **Topbar** (everywhere) | Global chrome | ☰ sidebar toggle, page title, global trip search,  theme menu,  notifications (broadcasts + trip alerts), user menu |
 
 ---
 
-## 🧰 Tech Stack & Free APIs
+##  Tech Stack & Free APIs
 
 **Frontend:** React 19 · Vite 7 · React Router 7 · Leaflet/React-Leaflet · Font Awesome · Inter + Quicksand fonts
 **Backend:** Supabase (PostgreSQL + Auth + Row-Level Security) — connected via `.env`
@@ -170,7 +170,7 @@ SafeRoute is a **Progressive Web App**:
 
 ---
 
-## 🗄️ Database (Supabase)
+##  Database (Supabase)
 
 All in [`supabase/schema.sql`](supabase/schema.sql) — idempotent, run it whole in the SQL Editor for any new project.
 
@@ -186,7 +186,7 @@ All in [`supabase/schema.sql`](supabase/schema.sql) — idempotent, run it whole
 
 ---
 
-## 🛡️ Admin Guide
+##  Admin Guide
 
 1. Register normally, then in Supabase → **Table Editor → profiles** → set your row's `role` to `admin`.
 2. Refresh the app → **Admin Panel** appears in the sidebar.
@@ -194,7 +194,7 @@ All in [`supabase/schema.sql`](supabase/schema.sql) — idempotent, run it whole
 
 ---
 
-## 🗂️ Project Structure
+##  Project Structure
 
 ```
 saferoute/
@@ -221,7 +221,7 @@ saferoute/
 
 ---
 
-## 📦 Scripts
+##  Scripts
 
 | Command | What it does |
 |---|---|
@@ -235,7 +235,7 @@ saferoute/
 
 ---
 
-## 🌐 Deploying to the Internet
+##  Deploying to the Internet
 
 1. Push to GitHub → import in **Vercel** or **Netlify**.
 2. Build command `npm run build`, output `dist`.
@@ -245,7 +245,7 @@ saferoute/
 
 ---
 
-## 🛠️ Troubleshooting
+##  Troubleshooting
 
 | Problem | Fix |
 |---|---|
@@ -261,12 +261,12 @@ saferoute/
 
 ---
 
-## 🔒 Security Notes
+##  Security Notes
 
 - This package **includes `.env`** on purpose so it runs instantly on your other PC. The `anon` key inside is designed to be public *for browser apps* — all real protection is enforced by **Row-Level Security** in the database. Still, **don't publish this zip or the repo publicly with `.env` inside** (`.gitignore` already excludes it from git).
 - Never put the Supabase **service_role** key in this project.
 - Subscription billing is a **demo** — plans are saved, no money moves.
 
 ---
-
+- Members: Hammad, Sarim, Shaheer
 *Documentation generated with the app running — screenshots captured live via Playwright browser automation. Made with ❤️ for safer roads.*
